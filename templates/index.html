@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Случайная Цитата</title>
+    <script>
+        async function fetchQuote() {
+            const response = await fetch('/quote');
+            const data = await response.json();
+            document.getElementById('quote').innerText = `"${data.quote}"`;
+            document.getElementById('author').innerText = `— ${data.author}`;
+        }
+    </script>
+</head>
+<body>
+    <h1>Случайная Цитата</h1>
+    <blockquote>
+        <p id="quote">Нажмите кнопку для получения цитаты.</p>
+        <footer id="author"></footer>
+    </blockquote>
+    <button onclick="fetchQuote()">Получить новую цитату</button>
+</body>
+</html>
